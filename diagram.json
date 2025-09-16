@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "author": "Artur Salumäe",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-mega",
+      "id": "mega",
+      "top": 360.73,
+      "left": 120,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": 701,
+      "left": 650.02,
+      "rotate": 90,
+      "attrs": { "arrow": "#f89e35" }
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper2",
+      "top": 700,
+      "left": -265.81,
+      "rotate": 270,
+      "attrs": { "arrow": "#f89e35" }
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 789, "left": 500.05, "attrs": {} },
+    {
+      "type": "wokwi-a4988",
+      "id": "drv2",
+      "top": 778.5,
+      "left": 45.31,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": 93.62,
+      "left": -34.57,
+      "rotate": 270,
+      "attrs": { "travelLength": "30" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot2",
+      "top": -44.81,
+      "left": 130.27,
+      "attrs": { "value": "512" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -19.8,
+      "left": 331.8,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "drv1:1B", "stepper1:B-", "green", [ "h0" ] ],
+    [ "drv1:1A", "stepper1:B+", "green", [ "h0" ] ],
+    [ "drv1:2A", "stepper1:A+", "green", [ "h0" ] ],
+    [ "drv1:2B", "stepper1:A-", "green", [ "h0" ] ],
+    [ "drv1:RESET", "drv1:SLEEP", "green", [ "v0" ] ],
+    [ "drv2:1B", "stepper2:B-", "green", [ "h0" ] ],
+    [ "drv2:1A", "stepper2:B+", "green", [ "h0" ] ],
+    [ "drv2:2A", "stepper2:A+", "green", [ "h0" ] ],
+    [ "drv2:2B", "stepper2:A-", "green", [ "h0" ] ],
+    [ "drv2:RESET", "drv2:SLEEP", "green", [ "v0" ] ],
+    [ "drv2:DIR", "mega:2", "orange", [ "h0" ] ],
+    [ "drv2:STEP", "mega:3", "gold", [ "h0" ] ],
+    [ "drv1:DIR", "mega:4", "orange", [ "h0" ] ],
+    [ "drv1:STEP", "mega:5", "gold", [ "h0" ] ],
+    [ "pot1:VCC", "mega:3.3V", "red", [ "v65.26", "h292.76" ] ],
+    [ "pot2:VCC", "mega:3.3V", "red", [ "v173.07", "h49.29" ] ],
+    [ "joystick1:VCC", "mega:3.3V", "red", [ "v50.17", "h3.95" ] ],
+    [ "pot2:GND", "mega:GND.2", "black", [ "v196.24", "h164.15" ] ],
+    [ "joystick1:GND", "mega:GND.2", "black", [ "v102.86", "h-52.15" ] ],
+    [ "pot1:GND", "pot2:GND", "black", [ "v-1.01", "h103.17" ] ],
+    [ "joystick1:VERT", "mega:A0", "green", [ "v26.97", "h-41.5" ] ],
+    [ "pot2:SIG", "mega:A1", "blue", [ "v222.94", "h107.38" ] ],
+    [ "pot1:SIG", "mega:A2", "violet", [ "v18.93", "h194.4" ] ]
+  ],
+  "dependencies": {}
+}
